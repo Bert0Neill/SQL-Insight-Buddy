@@ -1,6 +1,0 @@
-@DatabaseRagApi_HostAddress = http://localhost:5268
-
-GET {{DatabaseRagApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

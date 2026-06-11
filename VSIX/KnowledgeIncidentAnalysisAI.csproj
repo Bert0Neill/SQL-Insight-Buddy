@@ -75,6 +75,26 @@
     <Content Include="Misc\SQL Paths.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DatabaseAnalysisService\DatabaseAnalysisService.csproj">
+      <Project>{7c96d26f-7ef9-42fa-8948-d6d3a54501f1}</Project>
+      <Name>DatabaseAnalysisService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityGraphDBService\EntityGraphDBService.csproj">
+      <Project>{8e0a0fab-7f10-4e74-bf28-f1bcb6ad47b5}</Project>
+      <Name>EntityGraphDBService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityTimelineService\EntityTimelineService.csproj">
+      <Project>{12cc5e26-b3f6-4d42-bf4a-ee7faaf3ef9b}</Project>
+      <Name>EntityTimelineService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IncidentInsightsService\IncidentInsightsService.csproj">
+      <Project>{0b940f52-347e-4e94-92de-56feb024257d}</Project>
+      <Name>IncidentInsightsService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RagService\RagService.csproj">
+      <Project>{de4c811f-d45b-431a-b3be-c516310a705a}</Project>
+      <Name>RagService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SQL Versions\SSMS_21_SqlAdjust\SSMS_SqlAdjust.21.csproj">
       <Project>{cf35b71a-8441-48d9-92a5-dfbed33aab65}</Project>
       <Name>SSMS_SqlAdjust.21</Name>

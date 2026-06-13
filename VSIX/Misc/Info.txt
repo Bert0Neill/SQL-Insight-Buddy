@@ -27,7 +27,7 @@ C:\Program Files\Microsoft SQL Server Management Studio 22\Release\Common7\IDE\S
 
 
 ActivityLog
-%APPDATA%\Microsoft\AppEnv\XX.0\ActivityLog.xml
+C:\Users\Developer\AppData\Roaming\Microsoft\SSMS\22.0_e4abd3f9\
 
 property file installed to - %AppData%\SsmsAIBuddy\
 AI_Buddy_SSMS_Settings.json

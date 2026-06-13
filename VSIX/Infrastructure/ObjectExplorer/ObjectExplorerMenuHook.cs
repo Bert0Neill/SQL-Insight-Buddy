@@ -29,8 +29,10 @@ namespace KnowledgeIncidentAnalysisAI.Infrastructure.ObjectExplorer
         public void Initialize()
         {
             _objectExplorerService = ((IServiceProvider)_package).GetService(typeof(IObjectExplorerService)) as IObjectExplorerService;
+
             if (_objectExplorerService == null)
             {
+                MessageBox.Show("IObjectExplorerService is null");
                 return;
             }
 
@@ -40,6 +42,7 @@ namespace KnowledgeIncidentAnalysisAI.Infrastructure.ObjectExplorer
 
             if (treeProperty == null)
             {
+                MessageBox.Show("Tree property not found");
                 return;
             }
 
@@ -49,11 +52,13 @@ namespace KnowledgeIncidentAnalysisAI.Infrastructure.ObjectExplorer
                 return;
             }
 
-            _treeView.ContextMenuStripChanged += OnContextMenuStripChanged;
+            _treeView.ContextMenuStripChanged += OnContextMenuStripChanged;            
         }
 
         private void OnContextMenuStripChanged(object sender, EventArgs e)
         {
+            MessageBox.Show("Context menu changed");
+
             if (_treeView == null || _objectExplorerService == null || _treeView.ContextMenuStrip == null)
             {
                 return;
@@ -74,6 +79,8 @@ namespace KnowledgeIncidentAnalysisAI.Infrastructure.ObjectExplorer
             {
                 return;
             }
+
+            MessageBox.Show(nodes[0].UrnPath);
 
             SmoNodeInfo nodeInfo = SmoNodeInfoParser.Parse(nodes[0]);
             if (!nodeInfo.HasDatabaseContext)

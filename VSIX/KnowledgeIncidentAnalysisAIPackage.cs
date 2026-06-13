@@ -1,5 +1,5 @@
 ﻿// ==============================================
-// SsmsQueryEditorAIPackage Class
+// KnowledgeIncidentAnalysisAI Class
 //
 // Description:
 // This class is the main package for the VSIX extension. It interacts with Visual Studio's
@@ -101,6 +101,8 @@ namespace KnowledgeIncidentAnalysisAI
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+
+            System.Diagnostics.Debug.WriteLine("KnowledgeIncidentAnalysisAI loaded");
 
             _databaseContextMenuHandler = new DatabaseContextMenuHandler();
             _objectExplorerMenuHook = new ObjectExplorerMenuHook(this, OnDatabaseContextMenuAction);

@@ -91,15 +91,26 @@ namespace KnowledgeIncidentAnalysisAI
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    //[ProvideAutoLoad("d114938f-591c-46cf-a785-500a82d97410", PackageAutoLoadFlags.BackgroundLoad)]
-    [ProvideAutoLoad(UIContextGuids80.SolutionExists, PackageAutoLoadFlags.BackgroundLoad)]
+    [ProvideAutoLoad("d114938f-591c-46cf-a785-500a82d97410", PackageAutoLoadFlags.BackgroundLoad)]
     [Guid(KnowledgeIncidentAnalysisAIPackage.PackageGuidString)]
+
+    //[PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
+    //[Guid(KnowledgeIncidentAnalysisAIPackage.PackageGuidString)]
+    //[ProvideMenuResource("Menus.ctmenu", 1)]
+    //[ProvideAutoLoad(UIContextGuids80.SolutionExists, PackageAutoLoadFlags.BackgroundLoad)]
+    //[ProvideAutoLoad(UIContextGuids80.NoSolution, PackageAutoLoadFlags.BackgroundLoad)]
+
+    //[PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
+    //[ProvideAutoLoad("d114938f-591c-46cf-a785-500a82d97410", PackageAutoLoadFlags.BackgroundLoad)] //CommandGuids.ObjectExplorerToolWindowIDString
+    //[ProvideOptionPage(typeof(OptionsDialogPage), "SQL Server Object Explorer", "SSMS Object Explorer Menu", 0, 0, true)]
+
+
     public sealed class KnowledgeIncidentAnalysisAIPackage : AsyncPackage
     {
         /// <summary>
         /// DataChatAIPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "ad7390f9-52ec-46c9-9274-a5e174a30245";
+        public const string PackageGuidString = "96746bbf-ca13-4395-847d-877d896d4975"; //"ad7390f9-52ec-46c9-9274-a5e174a30245";
 
         private OptionsDialogPage options;
         private TreeView treeView;
@@ -131,7 +142,10 @@ namespace KnowledgeIncidentAnalysisAI
         {
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
 
-            Debug.WriteLine("Package loaded");
+            Debug.WriteLine("KnowledgeIncidentAnalysisAI loading");
+
+            Debug.WriteLine(">>> PACKAGE INITIALIZE STARTED <<<");
+            MessageBox.Show("Package loaded");
 
             _helperService = new SsmsHelper();
 
@@ -141,16 +155,13 @@ namespace KnowledgeIncidentAnalysisAI
                 StatusBarService.Initialize(_statusBar);
             }
 
-            await InitializeSsmsIntegrationAsync();
-        }
-
-        private async Task InitializeSsmsIntegrationAsync()
-        {
-            await Task.Delay(3000); // give SSMS time to fully load UI
+            //await InitializeSsmsIntegrationAsync();
 
             try
             {
                 var ssmsVersion = _helperService.RetrieveSsmsVersion();
+                System.Diagnostics.Debug.WriteLine($"KnowledgeIncidentAnalysisAI loaded - {ssmsVersion}");
+                Console.WriteLine($"KnowledgeIncidentAnalysisAI loaded - {ssmsVersion}");
 
                 InitializeSmoObjectExplorer(ssmsVersion);
 
@@ -179,7 +190,47 @@ namespace KnowledgeIncidentAnalysisAI
             treeView.ContextMenuStripChanged += TreeView_ContextMenuStripChanged;
 
             Debug.WriteLine("SSMS integration complete");
+
         }
+
+        //private async Task InitializeSsmsIntegrationAsync()
+        //{
+        //    // await Task.Delay(3000); // give SSMS time to fully load UI
+
+        //    try
+        //    {
+        //        var ssmsVersion = _helperService.RetrieveSsmsVersion();
+        //        System.Diagnostics.Debug.WriteLine($"KnowledgeIncidentAnalysisAI loaded - {ssmsVersion}");
+        //        Console.WriteLine($"KnowledgeIncidentAnalysisAI loaded - {ssmsVersion}");
+
+        //        InitializeSmoObjectExplorer(ssmsVersion);
+
+        //        objectExplorerService = _smoObjectExplorer.GetObjectExplorer();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LoggerService.Error(ex.ToString());
+        //        return;
+        //    }
+
+        //    if (objectExplorerService == null)
+        //        return;
+
+        //    var treeProperty = objectExplorerService.GetType()
+        //        .GetProperty("Tree", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.IgnoreCase);
+
+        //    if (treeProperty == null)
+        //        return;
+
+        //    treeView = treeProperty.GetValue(objectExplorerService, null) as TreeView;
+
+        //    if (treeView == null)
+        //        return;
+
+        //    treeView.ContextMenuStripChanged += TreeView_ContextMenuStripChanged;
+
+        //    Debug.WriteLine("SSMS integration complete");
+        //}
 
         //protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         //{
@@ -196,7 +247,7 @@ namespace KnowledgeIncidentAnalysisAI
         //    (this as IVsPackage).GetAutomationObject("SQL Server Object Explorer.SSMS Object Explorer Menu", out object automationObject);
         //    if (automationObject == null)
         //    {
-        //        MessageBox.Show("Automation Object not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+        //        MessageBox.Show("Automation Object not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         //        return;
         //    }
         //    options = (OptionsDialogPage)automationObject;

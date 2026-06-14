@@ -49,12 +49,29 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Application\DatabaseContextMenuHandler.cs" />
+    <Compile Include="Application\Extensions.cs" />
+    <Compile Include="Application\LoggerService.cs" />
+    <Compile Include="Application\SsmsHelper.cs" />
+    <Compile Include="Application\StatusBarService.cs" />
     <Compile Include="Domain\Enums\DatabaseContextMenuAction.cs" />
     <Compile Include="Domain\Models\DatabaseObjectReference.cs" />
+    <Compile Include="Domain\Models\objects\MenuItem.cs" />
+    <Compile Include="Domain\Models\objects\MenuItemInstance.cs" />
+    <Compile Include="Domain\Models\objects\NodeInfo.cs" />
+    <Compile Include="Domain\Models\OptionsDialogPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Domain\Models\RecordReference.cs" />
     <Compile Include="Domain\Models\SmoNodeInfo.cs" />
     <Compile Include="Infrastructure\ObjectExplorer\ObjectExplorerMenuHook.cs" />
     <Compile Include="Infrastructure\ObjectExplorer\SmoNodeInfoParser.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\AI_Resource.Designer.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="UI\AnalysisResultForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,10 +95,15 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
+      <Version>7.1.3</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" NoWarn="NU1604" />
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="17.14.2130" NoWarn="NU1604" />
   </ItemGroup>
@@ -91,6 +113,9 @@
     <Content Include="Misc\22\SqlWorkbench.Interfaces.dll" />
     <Content Include="Misc\Info.txt" />
     <Content Include="Misc\SQL Paths.txt" />
+    <None Include="Resources\QuestionMark.png" />
+    <None Include="Resources\plus.jpg" />
+    <None Include="Resources\Play.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Services\DatabaseAnalysisService\DatabaseAnalysisService.csproj">
@@ -123,6 +148,18 @@
       <Name>SSMS_SqlAdjust_22</Name>
       <Aliases>ssms22</Aliases>
     </ProjectReference>
+    <ProjectReference Include="..\SQL Versions\SSMS_SqlAdjust_Interfaces\SSMS_SqlAdjust_Interfaces.csproj">
+      <Project>{64B5FBBB-A832-46BA-BB61-BDFAF4A15286}</Project>
+      <Name>SSMS_SqlAdjust_Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AI_Resource.resx" />
+    <EmbeddedResource Include="Resources\Resource.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />

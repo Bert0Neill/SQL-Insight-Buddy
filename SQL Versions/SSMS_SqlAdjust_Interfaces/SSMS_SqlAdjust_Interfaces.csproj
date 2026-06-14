@@ -39,7 +39,7 @@
   <ItemGroup>
     <Reference Include="SqlWorkbench.Interfaces">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\SsmsQueryEditorAI\Misc\20\SqlWorkbench.Interfaces.dll</HintPath>
+      <HintPath>..\..\VSIX\Misc\21\SqlWorkbench.Interfaces.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />

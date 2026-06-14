@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Management.UI.VSIntegration.ObjectExplorer;
+using System;
 
 namespace SSMS_SqlAdjust_Interfaces
 {
@@ -6,5 +7,6 @@ namespace SSMS_SqlAdjust_Interfaces
     {
         void HookSelectionChanged(string methodName);
         string SelectedSmoNode { get; set; }
+        IObjectExplorerService GetObjectExplorer();
     }
 }

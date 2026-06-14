@@ -85,7 +85,7 @@ namespace SSMS_21_SqlAdjust
             }
         }
 
-        private IObjectExplorerService GetObjectExplorer()
+        public IObjectExplorerService GetObjectExplorer()
         {
             var serviceProvider = _package as System.IServiceProvider;
             return serviceProvider?.GetService(typeof(IObjectExplorerService)) as IObjectExplorerService;

@@ -38,9 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SqlWorkbench.Interfaces">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\VSIX\Misc\21\SqlWorkbench.Interfaces.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\VSIX\Misc\22\SqlWorkbench.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
